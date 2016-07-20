@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title></title>
+
+<style type="text/css">
+	#commentbox1{
+
+		width: 760px;
+		height: 150px;
+		border:2px solid black;
+		overflow: auto;
+		}
+	#commentbox2{
+
+		width: 500px;
+		height: 80px;
+		border:2px solid black;
+	}
+	#button{
+		margin-top: 20px;
+		margin-right: 45%;
+		margin-bottom: 5px;
+		background-color: white;
+	}
+</style>
+</head>
+<body>
+	<div id = 'wrapper'>
+
+		<div id = 'topbox'>
+			<h1>CodingDojo Wall</h1>
+			<p>Welcome {{ session['person'] }}</p>
+			
+			<form action = '/gobackhome'>
+				<input id = 'button' type = 'submit' value= 'Logout'>  
+			</form>
+
+			<hr>
+		</div>	
+
+		<div id = 'postbox'>
+			<h2>Post a message</h2>
+			<form action = '/wall/{{session["id"]}}', method= 'POST'>
+				<input id ='commentbox1' type = 'text' name = 'messagebox' >
+				<input id = 'button' type = 'submit' value= 'Post a message'>  
+			</form>
+			{% for mess in messages: %}
+				<p>{{mess['first_name']}} {{ mess['created_at'] }}</p> <br>
+				<p>{{ mess['message'] }} </p> <hr>
+
+						{% for comm in comments: %}
+							{% if comm['messages_id'] == mess["id"] %}
+								<p>{{comm['first_name']}} {{ comm['created_at'] }}</p> <br>
+								<p>{{ comm['comment'] }} </p>
+							{% endif %}
+						{% endfor %} <hr>
+
+						<h3>Post a comment</h3>
+					<div id = 'commentbox'>
+
+						<form action = '/wallcomment/{{mess["id"]}}', method= 'POST'>
+							<input id ='commentbox2' type = 'text' name = 'commentbox' >
+							<input id = 'button' type = 'submit' value= 'Post a comment'>  
+						</form>
+						
+					</div>
+					<hr>
+			{% endfor %}
+		</div>
+
+
+	</div>
+
+</body>
+</html>

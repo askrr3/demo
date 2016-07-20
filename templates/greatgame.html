@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='greatgame.css')}}">
+</head>
+<body>
+	<div id = 'wrapper'>
+		<div id = 'topbox'>
+			<h1>Welcome to the Great Number Game!</h1>
+			<p>I am thinking of a number between 1 and 100</p>
+			<p>Take a guess!</p>
+		</div><!-- end of topbox -->
+
+		<div id = 'bottombox'>
+			<h1 id = 'toohigh' {{high}} >too high</h1>
+
+			<h1 id = 'toolow' {{low}} >too low</h1>
+
+			<h3 id = 'correct' {{correct}}>{{correct}}{{session['guess']}} was the number!<br>
+				<form action ='/' method ='GET'>
+					
+					<input type='submit' value = 'playagain'>
+				</form>
+			</h3>
+
+			<form action = '/result' method ='POST'>
+				<input type ='text' name = 'userguess'> <br>
+				<input type='submit' value='Submit'>
+			</form>
+		</div><!-- end of bottombox -->
+
+	</div> <!-- end of wrapper -->
+
+</body>
+</html>

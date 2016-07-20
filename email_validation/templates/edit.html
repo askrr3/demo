@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h3>The email address you entered {{email}} is a VALID email address! Thank you!</h3>
+
+	<div>
+		<h1>Email Addresses Entered</h1> <br>
+		{% for user in users: %}
+		   <p>EMAIL: {{ user['email'] }}</p>
+		   <p>DATE: {{ user['created_on']}}</p>
+		{% endfor %}
+	</div>
+
+</body>
+</html>

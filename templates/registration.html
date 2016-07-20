@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<form action ='/result' method='POST'>
+			{% with messages = get_flashed_messages() %}
+	    		{% if messages %}
+	     		 	{% for message in messages %}
+	       			  <p>{{message}}</p>
+	     			{% endfor %}
+	    		{% endif %}
+	 		{% endwith %}
+		Email: <input type = 'email' name = 'email' >
+		First Name: <input type = 'text' name = 'firstname' >
+		Last Name: <input type = 'text' name = 'lastname' >
+		Password: <input type = 'password' name = 'password' >
+		Confirm Password: <input type = 'password' name = 'confirmpassword' >
+		<input type = 'submit' name = 'submit'>
+	</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="survey.css">
+
+</head>
+<body>
+	<div id = 'wrapper'>
+
+		<form action = '/result' method ='POST'>
+			{% with messages = get_flashed_messages() %}
+	    		{% if messages %}
+	     		 	{% for message in messages %}
+	       			  <p>{{message}}</p>
+	     			{% endfor %}
+	    		{% endif %}
+	 		{% endwith %}
+			Your:<input type = 'text' name = 'name' >
+			
+			<select name = 'location'><option value="Dojo Location">Dojo Location:</option>
+			</select>
+  			
+  			<select name = 'language'><option value="Favorite language">Favorite language:</option>
+  			</select>
+			
+			Comment: <input type = 'text' name = 'comment'>
+			
+			<input type='submit' value='Submit'>
+
+		</form>
+	</div>
+</body>
+</html>

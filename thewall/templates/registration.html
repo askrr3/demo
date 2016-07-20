@@ -1,0 +1,67 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#wrapper form{
+
+		width: 350px;
+		background-color: silver;
+		text-align: right;
+		margin-left: 330px;
+
+	}
+	#wrapper h1{
+		text-align: center;
+		width: 350px;
+		margin-left: 330px;
+
+	}
+	.input{
+		margin: 5px;
+	}
+	#button{
+		margin-top: 20px;
+		margin-right: 45%;
+		margin-bottom: 5px;
+		background-color: white;
+
+	}
+	#button2{
+		margin-top: 20px;
+		margin-right: 35%;
+		margin-bottom: 5px;
+		background-color: white;
+	}
+	#messages{
+		text-align: center;
+
+	}
+	</style>
+</head>
+<body>
+	<div id = 'wrapper'>
+		<h1>Registration</h1>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			 	{% for message in messages %}
+					<p id ='messages'>{{message}}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+
+		<form action = '/register' method ='POST'>
+			First Name: <input class='input' type = 'text' name ='fname'> <br>
+			Last Name: <input class='input' type = 'text' name ='lname'> <br>
+			Email: <input  class='input' type = 'text' name ='email'> <br>
+			Password: <input  class='input' type = 'password' name ='password'> <br>
+			Password Confirmation: <input class='input' type = 'password' name ='password_con'> <br>
+			<input id = 'button' type='submit' value = 'submit'>
+		</form>
+
+		<form action = '/login'>
+			<input id = 'button2' type='submit' value = 'Click here to Log-in'>
+		</form>
+
+	</div>
+</body>
+</html>
